@@ -34,7 +34,7 @@ module.exports = {
     var res = `Result: ${symbols[randomSymbols[0]]} ${symbols[randomSymbols[1]]} ${symbols[randomSymbols[2]]}`;
 
     const bet = interaction.options.getNumber('bet');
-    const removeRes = await removeChips(bet, interaction.user.id);
+    const removeRes = await removeChips(bet + (interaction.options.getNumber('symbol2') ? bet : 0), interaction.user.id);
     if (removeRes == -1) {
       await interaction.reply("Not enough chips!");
       return;
