@@ -39,7 +39,7 @@ async function removeChips(chips, userID) {
   const userRef = doc(db, "users", userID);
 
   try {
-    await runTransaction(db, async (transaction) => {
+    const res = await runTransaction(db, async (transaction) => {
       const user = await transaction.get(userRef);
       if (!user.exists()) {
         console.log("user not found");
@@ -57,7 +57,7 @@ async function removeChips(chips, userID) {
         return 0;
       }
     });
-    console.log("Transaction successfully committed!");
+    return res;
   } catch (error) {
     console.log("Transaction failed: ", error);
   }
