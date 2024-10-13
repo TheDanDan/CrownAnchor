@@ -17,11 +17,11 @@ module.exports = {
         .setRequired(true))
     .addNumberOption(option =>
       option.setName('symbol')
-        .setDescription(`Symbol to bet on\n0: ${symbols[0]}\n1: ${symbols[1]}\n2: ${symbols[2]}\n3: ${symbols[3]}\n4: ${symbols[4]}\n5: ${symbols[5]}`)
+        .setDescription('Symbol to bet on 0: Spades, 1: Diamonds, 2: Clubs, 3: Hearts, 4: Anchor, 5: Crown')
         .setRequired(true))
     .addNumberOption(option =>
       option.setName('symbol2')
-        .setDescription(`Second symbol to bet on\n0: ${symbols[0]}\n1: ${symbols[1]}\n2: ${symbols[2]}\n3: ${symbols[3]}\n4: ${symbols[4]}\n5: ${symbols[5]}`)
+        .setDescription('Second symbol to bet on 0: Spades, 1: Diamonds, 2: Clubs, 3: Hearts, 4: Anchor, 5: Crown')
         .setRequired(false))
     .setDescription('Bet on Crown and Anchor!'),
   async execute(interaction) {
