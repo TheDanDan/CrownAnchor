@@ -46,7 +46,7 @@ module.exports = {
 
     const symbol = interaction.options.getNumber('symbol');
     const symbol2 = interaction.options.getNumber('symbol2');
-    if (symbol < 0 || symbol >= max || (symbol2 && (symbol2 < 0 || symbol2 >= max))) {
+    if ((symbol < 0 || symbol > max) && (symbol2 && (symbol2 < 0 || symbol2 > max))) {
       await interaction.reply("Invalid symbol!");
       return;
     }
