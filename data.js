@@ -16,7 +16,7 @@ async function addChips(chips, userID) {
   const userRef = doc(db, "users", userID);
 
   try {
-    await runTransaction(db, async (transaction) => {
+    const res = await runTransaction(db, async (transaction) => {
       const user = await transaction.get(userRef);
       if (!user.exists()) {
         transaction.set(userRef, { chips: chips });
@@ -27,9 +27,11 @@ async function addChips(chips, userID) {
           chips: Math.round((user.data().chips + chips + Number.EPSILON) * 100) / 100
         });
         console.log("update user");
+        return user.data().chips + chips;
       }
     });
     console.log("Transaction successfully committed!");
+    return res;
   } catch (error) {
     console.log("Transaction failed: ", error);
   }
@@ -54,7 +56,7 @@ async function removeChips(chips, userID) {
           chips: user.data().chips - chips
         });
         console.log("update user");
-        return 0;
+        return user.data().chips - chips;
       }
     });
     return res;

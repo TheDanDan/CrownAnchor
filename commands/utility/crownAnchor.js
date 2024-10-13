@@ -61,7 +61,8 @@ module.exports = {
     res = res + `\nYou bet $${bet} on ${symbols[symbol]}` + (symbol2 ? ` and ${symbols[symbol2]}` : ``);
     res = res + `\nYou won $${bet * winCount}!`;
 
-    addChips(bet * winCount, interaction.user.id);
+    const addRes = await addChips(bet * winCount, interaction.user.id);
+    res = res + `\nYou now have $${(addRes).toFixed(2)}`;
 
     await interaction.reply(res);
   },
