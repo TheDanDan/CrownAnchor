@@ -65,6 +65,15 @@ async function removeChips(chips, userID) {
   }
 }
 
+async function getAllBalances() {
+  const balances = [];
+  const snapshot = await db.collection('users').get();
+  snapshot.forEach(doc => {
+    balances.push({ id: doc.id, chips: doc.data().chips });
+  });
+  return balances;
+}
+
 async function getAdmins() {
   const admins = [];
   const snapshot = await db.collection('admins').get();
@@ -74,4 +83,4 @@ async function getAdmins() {
   return admins;
 }
 
-module.exports = { addChips, removeChips };
+module.exports = { addChips, removeChips, getAllBalances, getAdmins };
