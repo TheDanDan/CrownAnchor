@@ -30,6 +30,6 @@ module.exports = {
       count += randomSymbols.filter(x => x == chosen).length;
     }
     console.log(symbolCount);
-    await interaction.reply(`Result: ${count/TEST} ${symbolCount}`);
+    await interaction.reply(`Result for ${TEST} runs: \nEV:${count/TEST} \nSymbol Count:${symbolCount} `);
   },
 };
