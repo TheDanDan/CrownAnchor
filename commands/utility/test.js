@@ -3,7 +3,7 @@ const wait = require('node:timers/promises').setTimeout;
 const crypto = require("crypto");
 
 const symbols = [":spades:", ":diamonds:", ":clubs:", ":hearts:", ":anchor:", ":crown:"];
-const TEST = 5000;
+const TEST = 10000;
 const chosen = 0;
 
 module.exports = {
@@ -22,9 +22,9 @@ module.exports = {
       randomSymbols[1] = Math.floor(crypto.randomBytes(4).readUInt32BE() / 0xFFFFFFFF * (5 + 1));
       randomSymbols[2] = Math.floor(crypto.randomBytes(4).readUInt32BE() / 0xFFFFFFFF * (5 + 1));
 
-      symbolCount[randomSymbols[0]] += 1.1;
-      symbolCount[randomSymbols[1]] += 1.1;
-      symbolCount[randomSymbols[2]] += 1.1;
+      symbolCount[randomSymbols[0]] += 1;
+      symbolCount[randomSymbols[1]] += 1;
+      symbolCount[randomSymbols[2]] += 1;
 
       if (randomSymbols.includes(chosen)) count++;
       count += randomSymbols.filter(x => x == chosen).length;
