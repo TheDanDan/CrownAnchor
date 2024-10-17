@@ -56,7 +56,7 @@ module.exports = {
     if (randomSymbols.includes(symbol)) winCount++;
     if (randomSymbols.includes(symbol2)) winCount++;
 
-    winCount += randomSymbols.filter(x => x == symbol || x == symbol2).length;
+    winCount += randomSymbols.filter(x => x == symbol || x == symbol2).length * 1.1;
 
     res = res + `\nYou bet $${bet} on ${symbols[symbol]}` + (symbol2 ? ` and ${symbols[symbol2]}` : ``);
     res = res + `\nYou won $${bet * winCount}!`;
