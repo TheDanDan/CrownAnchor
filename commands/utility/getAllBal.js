@@ -1,12 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { getAllBal } = require('../../data.js');
+const { getAllBalances } = require('../../data.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('get-all-bal')
     .setDescription('Get all balances'),
   async execute(interaction) {
-    const balances = await getAllBal();
+    const balances = await getAllBalances();
     let message = '```';
     balances.forEach((user) => {
       message += `${user.id}: $${user.chips}\n`;
