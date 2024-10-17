@@ -24,7 +24,7 @@ async function addChips(chips, userID) {
       }
       else{
         transaction.update(userRef, {
-          chips: Math.round((user.data().chips + chips + Number.EPSILON) * 100) / 100
+          chips: Math.round((user.data().chips + chips + Number.EPSILON) * 10000) / 10000
         });
         console.log("update user");
         return user.data().chips + chips;
