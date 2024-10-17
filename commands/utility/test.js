@@ -33,6 +33,6 @@ module.exports = {
       count += randomSymbols.filter(x => x == chosen).length * winAmount;
     }
     console.log(symbolCount);
-    await interaction.reply(`Result for ${TEST} runs: \nrEV:${(count/TEST).toFixed(5)} \nSymbol Count:${symbolCount} \nEV:${EV.toFixed(5)}`);
+    await interaction.reply({content: `Result for ${TEST} runs: \nrEV:${(count/TEST).toFixed(5)} \nSymbol Count:${symbolCount} \nEV:${EV.toFixed(5)}`, ephemeral: true});
   },
 };

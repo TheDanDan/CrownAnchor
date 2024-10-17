@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, runTransaction } = require("firebase/firestore");
+const { getFirestore, doc, runTransaction, getDocs, collection } = require("firebase/firestore");
 const { firebaseConfig } = require('./config.json');
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -67,9 +67,9 @@ async function removeChips(chips, userID) {
 
 async function getAllBalances() {
   const balances = [];
-  const snapshot = await db.collection('users').get();
+  const snapshot = await getDocs(collection(db, 'users'));
   snapshot.forEach(doc => {
-    balances.push({ id: doc.id, chips: doc.data().chips });
+    balances.push({ id: `<@${doc.id}>`, chips: doc.data().chips });
   });
   return balances;
 }

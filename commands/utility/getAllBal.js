@@ -7,11 +7,10 @@ module.exports = {
     .setDescription('Get all balances'),
   async execute(interaction) {
     const balances = await getAllBalances();
-    let message = '```';
+    message = "";
     balances.forEach((user) => {
-      message += `${user.id}: $${user.chips}\n`;
+      if (user.chips > 0.01) message += `${user.id}: $${user.chips}\n`;
     });
-    message += '```';
-    await interaction.reply(message);
+    await interaction.reply({ content: message, ephemeral: true });
   },
 };
