@@ -58,11 +58,12 @@ module.exports = {
 
     winCount += randomSymbols.filter(x => x == symbol || x == symbol2).length * 1.1;
 
-    res = res + `\nYou bet $${bet} on ${symbols[symbol]}` + (symbol2 ? ` and ${symbols[symbol2]}` : ``);
-    res = res + `\nYou won $${bet * winCount}!`;
+    res = res + `\nYou bet $${bet.toFixed(2)} on ${symbols[symbol]}` + (symbol2 ? ` and ${symbols[symbol2]}` : ``);
+    if (winCount == 0) res = res + `\nYou didn't win`;
+    else res = res + `\nYou won $${(bet * winCount).toFixed(4)}!`;
 
     const addRes = await addChips(bet * winCount, interaction.user.id);
-    res = res + `\nYou now have $${(addRes).toFixed(2)}`;
+    res = res + `\nYou now have $${(addRes).toFixed(4)}`;
 
     await interaction.reply(res);
   },
